@@ -1,1 +1,117 @@
+import tkinter as tk
+
+import tkinter.filedialog as fd
+
+#fd.askopenfile(mode=" ",**options)
+""" text state parameter and index parameter,"""
+
+window=tk.Tk()
+window.title("Os project")
+window.resizable(width=False,height=False)
+
+def open_as():
+
+    filetype=[("Text files","*.txt"),
+           ("Wordpad Files","*.rtf"),
+           ("python files","*.py"),
+           ("mp4 files","*.mp4"),
+           ("pdf files","*.pdf"),
+           ("mp3 files","*.mp3")
+           ]
+           
+                                   
+    files_object=fd.askopenfilename(title="Open As",filetypes=filetype,initialdir="\\")
+
+    file=open(files_object,'r')
+
+    text.delete("1.0",tk.END)
+
+
+    text.insert("1.0",file.read())
+
+    file.close()
+
+
+def save_function(event):
+    def click_count():
+        i=0
+        while True:
+            i+=1
+            write.write(str(i))
+
+    files=[("All Files","*.*"),
+           ("Text Files","*.txt"),
+           ("Wordpad files","*.rtf")
+           ]
+    
+
+
+
+
+   
+   
+    file_name=fd.asksaveasfilename(filetypes=files,defaultextension=files )
+   
+    with open (file_name,'w') as write:
+        write.write(text.get("1.0",tk.END))
+ 
+
+lbl_text=tk.Label(text="TEXT",font=("Roboto",15))
+text=tk.Text(height=10,width=20,font=("Montserrat",15),bd=4)
+button=tk.Button(text="COPY",)
+button01=tk.Button(text="SAVE")
+button02=tk.Button(text="OPEN AS",command=open_as) # all open file and paste on text widget
+
+
+    
+button.bind("<Button-1>",text.get("1.0",tk.END))
+button01.bind("<Button-1>",save_function)
+
+
+lbl_text.columnconfigure(2,weight=2)
+lbl_text.grid(row=0,column=2)
+
+text.rowconfigure(1,weight=3,)
+text.columnconfigure(2,weight=3)
+text.grid(row=1,column=2)
+
+button.grid(row=2,column=2,sticky="e")
+button01.grid(row=2,column=2,sticky="w")
+button02.grid(column=2,row=2)
+
+"""List=[]"""
+
+
+window.mainloop()
+
+
+
+
+    
+
+    
+
+"""if text.get("1.0",tk.END)!= ' ':
+            List.append(text.get("1.0",tk.END))
+            write.write(text.get("1.0",tk.END)),write.write(str(len(List)))"""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
